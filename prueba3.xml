@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<pisosArtesanales>
+<piso nombre="ejemplo02">
+ <R> 3 </R>
+ <C> 3 </C>
+ <F> 1 </F>
+ <S> 1 </S>
+ <patrones>
+ <patron codigo="cod21"> 
+ WBBBWBWWW
+ </patron>
+ </patrones>
+ </piso>
+</pisosArtesanales>
