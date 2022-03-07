@@ -1,10 +1,10 @@
 import xml.etree.ElementTree as ET
-from lista_doble import lista_doble
-from listas import LinkedList
-from pisos import PISO
 from temp import piso_t, patron_t
 from Lista_clases import pisos_list,patron_list
-tree = ET.parse('prueba3.xml')
+
+z = input("Hola, por favor escribe la ruta del xml")
+zz = open(str(z))
+tree = ET.parse(zz)
 root = tree.getroot()
 piso_nombre = "" #GUARDAR EL NOMBRE DEL PISO
 piso_rows = 0 #GUARDA LAS FILAS
@@ -36,3 +36,4 @@ for pisos in root.findall("piso"): #RECORRE TODOS LOS PISOS
     Pisos.añadir (piso_nombre,piso_rows,piso_col,piso_vol,piso_in,Patrones)
 
 Pisos.mosaico1()
+Pisos.file()

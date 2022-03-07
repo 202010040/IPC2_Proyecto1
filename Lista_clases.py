@@ -30,7 +30,7 @@ class patron_list:
     def recorrer (self):
         temp = self.primero
         while temp:
-            print(temp.codigo,temp.texto)
+            #print(temp.codigo,temp.texto)
             temp = temp.siguiente
             if temp == self.primero:
                 break
@@ -64,11 +64,11 @@ class pisos_list:
     def recorrer (self):
         temp = self.primero
         while temp:
-            print(temp.nombre,temp.rows,temp.col,temp.vol,temp.intercambio)
+            #print(temp.nombre,temp.rows,temp.col,temp.vol,temp.intercambio)
             temp0 = temp.patrones.primero
 
             while temp0:
-                print (temp0.codigo,temp0.texto)
+                #print (temp0.codigo,temp0.texto)
                 temp0=temp0.siguiente
                 if temp0 == temp.patrones.primero:
                      break
@@ -83,7 +83,7 @@ class pisos_list:
             temp0 = temp.patrones.primero
 
             while temp0:
-                print(temp0.texto)
+                #print(temp0.texto)
                 self.mosaico2(temp.rows,temp.col,temp0.texto,temp.nombre + temp0.codigo)
                 temp0=temp0.siguiente
                 if temp0 == temp.patrones.primero:
@@ -121,13 +121,42 @@ class pisos_list:
 
         temp = self.primero
         while temp :
-            temp0 = temp.patrones.primero
+
             texto += """<h1>Para el """
-            texto += temp.nombre
-            texto += " El costo por volteo es de: </h1>"""
+            texto += str(temp.nombre)
+            texto += " El costo por volteo es de: """
+            texto += str(temp.vol)
+            texto += """ </h1>"""
+
+            texto += "<h1> Y el costo por intercambio es de: """
+            texto += str(temp.intercambio)
+            texto += """ </h1>"""
+            temp0 = temp.patrones.primero
+            texto += """<h4> A continuación se muestra la matriz origen: </h4>"""
+            while temp0:    
+                i = 0
+                while i < temp.rows:
+                    texto += """<img class = "centrada" src=\""""
+                    texto += temp.nombre + temp0.codigo+ "-" + str(i) + ".png" + "\"" + ">"
+                    #print (temp.nombre + temp0.codigo+ "-" + str(i) + ".png")
+                    i += 1 
+                temp0 = temp0.siguiente
+                if temp0 == temp.patrones.primero:
+                    break
+                texto += """<h4> Siguiente matriz: </h4>"""
+            temp = temp.siguiente        
+            if temp == self.primero:
+                break
 
         texto += """</body>
                     </html>"""
+        return (texto)
+    
+    def file (self):
+        f = open ("reporte.html", "w")
+        f.write(self.html())
+        f.close()
+        print ("!Tu reporte en html esta listo!")
 
 class mosaico_list:
     def __init__(self):
