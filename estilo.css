@@ -1,0 +1,17 @@
+body {
+    background-color: lightblue;
+}
+  
+h1 {
+    color: rgb(145, 205, 207);
+    text-align: center;
+}
+  
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+.centrada{
+    margin :auto;
+    display: block;
+}

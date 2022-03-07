@@ -50,9 +50,9 @@ class LinkedList :
         Actual = self.primero
         while Actual != None:
             String += str (Actual)
-            String += ","
+            if Actual.next != None:
+             String += ","
             Actual = Actual.next
         String += "]"
         return String
 
-MyList = LinkedList ()
