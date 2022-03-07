@@ -6,27 +6,18 @@ from turtle import color
 import graphviz
 from Lista import Lista
 import pydot
+
+
 class lista_doble:
     def __init__(self):
         self.primero = None
         self.ultimo = None
-
+    
     def vacia (self): #Comprueba si la lista está vacia
         if self.primero == None:
             return True
         else:
             return False
-    
-    def  agregar_primero (self,color,posicion) :
-        nuevo = Lista(color,posicion)
-        if self.vacia():
-            self.primero = self.ultimo = nuevo
-        else:
-            temp = nuevo
-            temp.siguiente =self.primero
-            self.primero.anterior = temp
-            self.primero = temp
-            self.unir()
     
     def agregar_ultimo (self,color,posicion):
         nuevo = Lista(color,posicion)
@@ -51,13 +42,7 @@ class lista_doble:
         else:
             self.primero = self.primero.siguiente
             self.umir()
-    def recorrer (self):
-        temp = self.primero
-        while temp:
-            print(temp.color,temp.posicion)
-            temp = temp.siguiente
-            if temp == self.primero:
-                break
+
     def buscar (self, color,posicion):
         temp = self.primero
         while temp:
@@ -68,33 +53,7 @@ class lista_doble:
                 if temp == self.primero:
                     return False
 
-    def reporte (self): #ESTO NO SE USA
-        temp = self.primero
-        text = "digraph  G{\n\n"
-        text += "rankdir=LR; \n node[shape=egg,style=filled,color=khaki,fontname=\"Century Gothic\"]; graph [fontname = \"Century Gothic\"];\n"
-        text += "labelloc = \"t;\"label = \"Lista\";\n"
-        while temp:
-            text += "i" + str(temp.color)+"[dir=both label = \"Color = "+str(temp.color)+"\\Posicion = "+str(temp.posicion)+ "\"]"
-            text += "i"+str(temp.color)+"-> i"+str(temp.siguiente.color)+"\n"
-            text += "i"+ str(temp.color)+"-> i"+str(temp.anterior.color)+"\n"
-            temp = temp.siguiente
-            if temp != self.primero:
-                text += "i" + str(temp.color)+"[dir=both label = \"Color = "+str(temp.color)+"\\Posicion = "+str(temp.posicion)+ "\"]" 
-                print (text)
-            if temp == self.ultimo:
-                text += "i"+str(temp.color)+"-> i"+str(temp.siguiente.color)+"\n"
-                text += "i"+ str(temp.color)+"-> i"+str(temp.anterior.color)+"\n"
-                break
-        return text
-
-    def reportar (self): #ESTO TAMPOCO SE USA
-        contenido = str(self.reporte())+"\n}"
-        f = open ("ejemplo.txt","w")
-        f.write(contenido)
-        f.close()
-        print ("listo")
-  
-    def reporte2_1 (self):
+    def reporte (self):
         f = graphviz.Digraph("G",filename="Ejemplo.dot",format='dot',node_attr= {'shape': 'record', 'height': '1'},edge_attr={'style':'dashed'},renderer="dot",directory='imagenes')
         f.graph_attr["rankdir"]="LR"#DERECHA A IZQUIERDA
         f.attr(rank = "same")#MISMO RANGO
@@ -116,7 +75,7 @@ class lista_doble:
                 temp = temp.siguiente
         return (f)
 
-    def reportar2 (self,nombre): #CREA UN REPORTE DE SALIDA
+    def reportar (self,nombre): #CREA UN REPORTE DE SALIDA
         x = self.reporte2_1().source
         graf = pydot.graph_from_dot_data(x)
         name = nombre+".png"

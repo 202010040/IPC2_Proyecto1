@@ -3,12 +3,21 @@ body {
 }
   
 h1 {
-    color: rgb(145, 205, 207);
+    color: rgb(19, 50, 51);
+    text-align: left;
+    font-style: 'Segoe UI';
+    font-size: medium;
+}
+
+h4{
+    color: rgb(6, 10, 10);
     text-align: center;
+    font-style: 'Segoe UI';
+    font-size: larger;
 }
   
 p {
-    font-family: verdana;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
 }
 .centrada{
